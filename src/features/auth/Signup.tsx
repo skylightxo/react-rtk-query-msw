@@ -9,7 +9,7 @@ import {
   } from "@chakra-ui/react";
   import React, { useState } from "react";
   import { useSignUpMutation } from "../../services/auth";
-  import { useHistory } from "react-router-dom";
+  import { Link, useHistory } from "react-router-dom";
   import { UserSignUp } from "src/models/User";
   import { signupSchema } from "src/schemas/Auth";
   
@@ -111,8 +111,11 @@ import {
             colorScheme="green"
             isLoading={isLoading}
           >
-            Login
+            Sign Up
           </Button>
+
+          <Link to="/login">Login</Link>
+          
           <Divider />
         </VStack>
       </Center>

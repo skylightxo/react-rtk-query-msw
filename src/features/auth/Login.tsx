@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import { useLoginMutation } from "../../services/auth";
 import { setCredentials } from "../../store/auth/authSlice";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { UserLogin } from "src/models/User";
 
@@ -94,6 +94,9 @@ export const Login = () => {
         >
           Login
         </Button>
+          
+        <Link to="/signup">Sign up</Link>
+          
         <Divider />
       </VStack>
     </Center>
