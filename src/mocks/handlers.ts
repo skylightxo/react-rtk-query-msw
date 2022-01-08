@@ -17,7 +17,7 @@ const [token, refreshToken] = [nanoid(), nanoid()];
 
 const login = rest.post('/login', (req, res, ctx) => {
   const {username, password} = (req.body as UserLogin);
-  const user = inMemoryStorage.users.find(user => user.username);
+  const user = inMemoryStorage.users.find(user => user.username === username);
   if(user && user.password === password){
     return res(
         ctx.delay(400),
