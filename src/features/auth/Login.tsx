@@ -5,10 +5,10 @@ import {
   VStack,
   Button,
   Divider,
-  Center
+  Center,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { useLoginMutation } from "../../services/auth";
+import { useLoginMutation } from "../../services";
 import { setCredentials } from "../../store/auth/authSlice";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -16,7 +16,7 @@ import { UserLogin } from "src/models/User";
 
 function PasswordInput({
   name,
-  onChange
+  onChange,
 }: {
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -48,12 +48,11 @@ export const Login = () => {
 
   const [formState, setFormState] = useState<UserLogin>({
     username: "",
-    password: ""
+    password: "",
   });
 
   const [login, { isLoading }] = useLoginMutation();
 
-  
   const handleLogin = async () => {
     try {
       const result = await login(formState);
@@ -64,10 +63,10 @@ export const Login = () => {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const handleChange = ({
-    target: { name, value }
+    target: { name, value },
   }: React.ChangeEvent<HTMLInputElement>) =>
     setFormState((prev) => ({ ...prev, [name]: value }));
 
@@ -94,9 +93,9 @@ export const Login = () => {
         >
           Login
         </Button>
-          
+
         <Link to="/signup">Sign up</Link>
-          
+
         <Divider />
       </VStack>
     </Center>

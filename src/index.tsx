@@ -7,27 +7,23 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import { worker } from "./mocks/browser";
 
-const app = <React.StrictMode>
-  <Provider store={store}>
-    <ChakraProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ChakraProvider>
-  </Provider>
-</React.StrictMode>
+const app = (
+  <React.StrictMode>
+    <Provider store={store}>
+      <ChakraProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ChakraProvider>
+    </Provider>
+  </React.StrictMode>
+);
 
 // Start the mocking conditionally.
-if (process.env.NODE_ENV === 'development') {
-  worker.start({ quiet: true }).then(() =>
-    ReactDOM.render(
-      app,
-      document.getElementById("root")
-    )
-  );
+if (process.env.NODE_ENV === "development") {
+  worker
+    .start({ quiet: true })
+    .then(() => ReactDOM.render(app, document.getElementById("root")));
 } else {
-  ReactDOM.render(
-    app,
-    document.getElementById("root")
-  )
+  ReactDOM.render(app, document.getElementById("root"));
 }

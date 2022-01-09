@@ -4,15 +4,14 @@ import { Login } from "./features/auth/Login";
 import { Box, Center, VStack } from "@chakra-ui/react";
 import { PrivateRoute } from "./utils/PrivateRoute";
 import { Signup } from "./features/auth/Signup";
+import { DataTable } from "./components/DataTable";
 
 function Hooray() {
   return (
-    <Center h="500px">
+    <Center>
       <VStack>
         <Box>Hooray you logged in!</Box>
-        <Box>
-          
-        </Box>
+        <DataTable />
       </VStack>
     </Center>
   );
@@ -24,9 +23,11 @@ function App() {
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <PrivateRoute path="/">
+        {/* <PrivateRoute path="/"> */}
+        <Route exact path="/">
           <Hooray />
-        </PrivateRoute>
+          {/* </PrivateRoute> */}
+        </Route>
       </Switch>
     </Box>
   );

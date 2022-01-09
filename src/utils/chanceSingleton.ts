@@ -1,19 +1,19 @@
-import _Chance from 'chance';
+import _Chance from "chance";
 
-class Chance extends _Chance{
-    private static instance: Chance;
+class Chance extends _Chance {
+  private static instance: Chance;
 
-    private constructor(){
-        super();
+  private constructor() {
+    super();
+  }
+
+  public static getInstance(): Chance {
+    if (!Chance.instance) {
+      Chance.instance = new Chance();
     }
-    
-    public static getInstance(): Chance {
-        if(!Chance.instance){
-            Chance.instance = new Chance();
-        }
 
-        return Chance.instance;
-    }
+    return Chance.instance;
+  }
 }
 
 export const chance = Chance.getInstance();
